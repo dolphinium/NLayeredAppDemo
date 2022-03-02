@@ -25,6 +25,7 @@ namespace Northwind.WebFormsUI
 
         private IProductService _productService;
         private ICategoryService _categoryService;
+
         private void Form1_Load(object sender, EventArgs e)
         {
             LoadProducts();
@@ -47,13 +48,25 @@ namespace Northwind.WebFormsUI
         {
             try
             {
-                dgwProduct.DataSource = _productService.GetProductsByCategory(Convert.ToInt32(cbxCategory.SelectedValue));
+                dgwProduct.DataSource =
+                    _productService.GetProductsByCategory(Convert.ToInt32(cbxCategory.SelectedValue));
             }
             catch
             {
-                
             }
-           
+        }
+
+        private void tbxProductName_TextChanged(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(tbxProductName.Text))
+            {
+                dgwProduct.DataSource = _productService.GetProductByProductName(tbxProductName.Text);
+            }
+            else
+            {
+                LoadProducts();
+            }
+            
         }
     }
 }
