@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Northwind.Entities.Concrete;
 
-namespace Northwind.DataAccess.Abstract
+namespace Northwind.DataAccess.Concrete.EntityFramework
 {
-    public interface IProductDal : IEntityRepository<Product>
+    internal class EfCategoryDal:EfEntityRepositoryBase<Category,NorthwindContext>
     {
     }
 }
