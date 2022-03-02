@@ -7,7 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Northwind.Business.Abstract;
 using Northwind.Business.Concrete;
+using Northwind.DataAccess.Concrete.EntityFramework;
+using Northwind.DataAccess.Concrete.NHibernate;
 
 namespace Northwind.WebFormsUI
 {
@@ -16,13 +19,13 @@ namespace Northwind.WebFormsUI
         public Form1()
         {
             InitializeComponent();
+            _productService = new ProductManager(new NhProductDal());  // will be fixed!
         }
 
-       
+        private IProductService _productService;
         private void Form1_Load(object sender, EventArgs e)
         {
-            ProductManager productManager = new ProductManager();
-            dgwProduct.DataSource = productManager.GetAll();
+            dgwProduct.DataSource = _productService.GetAll();
         }
     }
 }
