@@ -11,6 +11,7 @@ using Northwind.Business.Abstract;
 using Northwind.Business.Concrete;
 using Northwind.DataAccess.Concrete.EntityFramework;
 using Northwind.DataAccess.Concrete.NHibernate;
+using Northwind.Entities.Concrete;
 
 namespace Northwind.WebFormsUI
 {
@@ -37,6 +38,10 @@ namespace Northwind.WebFormsUI
             cbxCategory.DataSource = _categoryService.GetAll();
             cbxCategory.DisplayMember = "CategoryName";
             cbxCategory.ValueMember = "CategoryId";
+
+            cbxCategoryIdAdd.DataSource = _categoryService.GetAll();
+            cbxCategoryIdAdd.DisplayMember = "CategoryName";
+            cbxCategoryIdAdd.ValueMember = "CategoryId";
         }
 
         private void LoadProducts()
@@ -66,7 +71,20 @@ namespace Northwind.WebFormsUI
             {
                 LoadProducts();
             }
-            
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            _productService.Add(new Product
+            {
+                CategoryId = Convert.ToInt32(cbxCategoryIdAdd.SelectedValue),
+                ProductName = tbxProductNameAdd.Text,
+                QuantityPerUnit = tbxQuantityPerUnitAdd.Text,
+                UnitPrice = Convert.ToDecimal(tbxUnitPriceAdd.Text),
+                UnitsInStock = Convert.ToInt16(tbxStockAmountAdd.Text)
+            });
+            MessageBox.Show("Product Saved!");
+            LoadProducts();
         }
     }
 }
