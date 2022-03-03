@@ -79,16 +79,26 @@ namespace Northwind.WebFormsUI
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            _productService.Add(new Product
+
+            try
             {
-                CategoryId = Convert.ToInt32(cbxCategoryIdAdd.SelectedValue),
-                ProductName = tbxProductNameAdd.Text,
-                QuantityPerUnit = tbxQuantityPerUnitAdd.Text,
-                UnitPrice = Convert.ToDecimal(tbxUnitPriceAdd.Text),
-                UnitsInStock = Convert.ToInt16(tbxStockAmountAdd.Text)
-            });
-            MessageBox.Show("Product Saved!");
-            LoadProducts();
+                _productService.Add(new Product
+                {
+                    CategoryId = Convert.ToInt32(cbxCategoryIdAdd.SelectedValue),
+                    ProductName = tbxProductNameAdd.Text,
+                    QuantityPerUnit = tbxQuantityPerUnitAdd.Text,
+                    UnitPrice = Convert.ToDecimal(tbxUnitPriceAdd.Text),
+                    UnitsInStock = Convert.ToInt16(tbxStockAmountAdd.Text)
+                });
+                MessageBox.Show("Product Saved!");
+                LoadProducts();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+           
+            
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -126,7 +136,7 @@ namespace Northwind.WebFormsUI
                     {
                         ProductId = Convert.ToInt32(dgwProduct.CurrentRow.Cells[0].Value)
                     });
-                    MessageBox.Show("Product Deleted!");
+                    MessageBox.Show("Product Deleted!"); 
                     LoadProducts();
                 }
             }
