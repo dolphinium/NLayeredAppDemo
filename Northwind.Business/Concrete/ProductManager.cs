@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,6 +46,19 @@ namespace Northwind.Business.Concrete
         public void Update(Product product)
         {
             _productDal.Update(product);
+        }
+
+        public void Delete(Product product)
+        {
+            try
+            {
+                _productDal.Delete(product);
+            }
+            catch               // I deleted DBUpdateException because, business layer should not contain Entity framework for principle
+            {
+                throw new Exception("System can not delete the selected object!");
+            }
+            
         }
     }
 }

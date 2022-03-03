@@ -101,7 +101,6 @@ namespace Northwind.WebFormsUI
                 UnitsInStock = Convert.ToInt16(tbxStockAmountUpdate.Text),
                 QuantityPerUnit = tbxQuantityPerUnitUpdate.Text,
                 UnitPrice = Convert.ToDecimal(tbxUnitPriceUpdate.Text)
-                
             });
             MessageBox.Show("Product Updated!");
             LoadProducts();
@@ -115,6 +114,26 @@ namespace Northwind.WebFormsUI
             tbxUnitPriceUpdate.Text = row.Cells[3].Value.ToString();
             tbxQuantityPerUnitUpdate.Text = row.Cells[4].Value.ToString();
             tbxStockAmountUpdate.Text = row.Cells[5].Value.ToString();
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgwProduct.CurrentRow != null)
+                {
+                    _productService.Delete(new Product
+                    {
+                        ProductId = Convert.ToInt32(dgwProduct.CurrentRow.Cells[0].Value)
+                    });
+                    MessageBox.Show("Product Deleted!");
+                    LoadProducts();
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
     }
 }

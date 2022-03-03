@@ -59,6 +59,7 @@
             this.lblUnitPriceUpdate = new System.Windows.Forms.Label();
             this.lblCategoryIdUpdate = new System.Windows.Forms.Label();
             this.lblProductNameUpdate = new System.Windows.Forms.Label();
+            this.btnRemove = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgwProduct)).BeginInit();
             this.gbxCategory.SuspendLayout();
             this.gbxProductName.SuspendLayout();
@@ -145,7 +146,7 @@
             this.gbxProductAdd.Controls.Add(this.lblUnitPriceAdd);
             this.gbxProductAdd.Controls.Add(this.lblCategoryIdAdd);
             this.gbxProductAdd.Controls.Add(this.lblProductNameAdd);
-            this.gbxProductAdd.Location = new System.Drawing.Point(26, 444);
+            this.gbxProductAdd.Location = new System.Drawing.Point(26, 477);
             this.gbxProductAdd.Name = "gbxProductAdd";
             this.gbxProductAdd.Size = new System.Drawing.Size(736, 155);
             this.gbxProductAdd.TabIndex = 3;
@@ -256,7 +257,7 @@
             this.gbxProductUpdate.Controls.Add(this.lblUnitPriceUpdate);
             this.gbxProductUpdate.Controls.Add(this.lblCategoryIdUpdate);
             this.gbxProductUpdate.Controls.Add(this.lblProductNameUpdate);
-            this.gbxProductUpdate.Location = new System.Drawing.Point(26, 626);
+            this.gbxProductUpdate.Location = new System.Drawing.Point(26, 659);
             this.gbxProductUpdate.Name = "gbxProductUpdate";
             this.gbxProductUpdate.Size = new System.Drawing.Size(736, 155);
             this.gbxProductUpdate.TabIndex = 4;
@@ -354,11 +355,22 @@
             this.lblProductNameUpdate.TabIndex = 0;
             this.lblProductNameUpdate.Text = "Product Name";
             // 
+            // btnRemove
+            // 
+            this.btnRemove.Location = new System.Drawing.Point(645, 438);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(75, 23);
+            this.btnRemove.TabIndex = 5;
+            this.btnRemove.Text = "Delete";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(783, 852);
+            this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.gbxProductUpdate);
             this.Controls.Add(this.gbxProductAdd);
             this.Controls.Add(this.gbxProductName);
@@ -413,6 +425,7 @@
         private System.Windows.Forms.Label lblUnitPriceUpdate;
         private System.Windows.Forms.Label lblCategoryIdUpdate;
         private System.Windows.Forms.Label lblProductNameUpdate;
+        private System.Windows.Forms.Button btnRemove;
     }
 }
 
